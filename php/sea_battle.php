@@ -1,7 +1,7 @@
 <?php
 
 define ("MATRIX_SIZE", 10);
-
+//проверка можно ли поставить корабль
 function is_empty($matrix, $x, $y, $dir, $lenght) {
 	if($dir == 1) {
 		if($x > MATRIX_SIZE - $lenght)
@@ -21,20 +21,22 @@ function is_empty($matrix, $x, $y, $dir, $lenght) {
 	}
 	return 1;
 }
-
+//создаем поле
 for ($i=0; $i < MATRIX_SIZE; ++$i) {
 	for ($j=0; $j < MATRIX_SIZE; ++$j) {
 		$mat[$i][$j] = 0;
 	}
 }
-
+//расставляем корабли
 for($i = 4; $i > 3; --$i) {
 	$empt_fl = 0;
+	//задаем координаты
 	for(; !$empt_fl; $empt_fl = is_empty($mat, $x, $y, $dir, $i)) {
 		$x = rand(0, 10);
 		$y = rand(0, 10);
 		$dir = rand(0, 1);
 	}
+	//окружаем корабль "забором"
 	if($dir == 0) {
 		if($x > 0) {
 			$mat[$y][$x-1] = -1;
@@ -67,7 +69,7 @@ for($i = 4; $i > 3; --$i) {
 				$mat[$y+$i][$x+1] = -1;
 		}
 	}
-
+	//ставим сам корабль
 	for($j = 0; $j < $i; ++$j) {
 		if($dir == 0) {
 			$mat[$y + $j][$x] = $i;
@@ -84,7 +86,7 @@ for($i = 4; $i > 3; --$i) {
 		}
 	}
 }
-
+//печатаем поле
 print "<table border=\"1\" > <tr>";
 	for ($i=0; $i < MATRIX_SIZE; ++$i) {
 		for ($j=0; $j < MATRIX_SIZE; ++$j) {
