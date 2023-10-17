@@ -116,6 +116,55 @@ class Ship {
 		return 1;
 
 	}
+	public function death($matrix) {
+		if() {
+			if($this->$dir == 0) {
+				if($this->$x > 0) {
+					$matrix[$this->$y][$this->$x-1] = -2;
+					if($this->$y > 0) 
+						$matrix[$this->$y-1][$this->$x-1] = -2;
+					if($this->$y < 9)
+						$matrix[$this->$y+1][$this->$x-1] = -2;
+				}
+				if($this->$x+$this->$lenght-1 < 9) {
+					$matrix[$this->$y][$this->$x+$this->$lenght] = -2;
+					if($this->$y > 0) 
+						$matrix[$this->$y-1][$this->$x+$this->$lenght] = -2;
+					if($this->$y < 9)
+						$matrix[$this->$y+1][$this->$x+$this->$lenght] = -2;
+				}
+			}
+			else {
+				if($this->$y > 0) {
+					$matrix[$this->$y-1][$this->$x] = -2;
+					if($this->$x > 0)
+						$matrix[$this->$y-1][$this->$x-1] = -2;
+					if($this->$x < 9)
+						$matrix[$this->$y-1][$this->$x+1] = -2;
+				}
+				if($this->$y+$this->$lenght-1 < 9) {
+					$matrix[$this->$y+$this->$lenght][$this->$x] = -2;
+					if($x > 0)
+						$matrix[$this->$y+$this->$lenght][$this->$x-1] = -2;
+					if($this->$x < 9)
+						$matrix[$this->$y+$this->$lenght][$this->$x+1] = -2;
+				}
+			}
+			for($j = 0; $j < $this->$lenght; ++$j) {
+				if($this->$dir == 0) {
+					if($this->$x < 9)
+						$matrix[$this->$y + $j][$this->$x+1] = -2;
+					if($this->$x > 0)
+						$matrix[$this->$y + $j][$this->$x-1] = -2;
+				} else {
+					if($this->$y < 9)
+						$matrix[$this->$y+1][$this->$x + $j] = -2;
+					if($this->$y > 0)
+						$matrix[$this->$y-1][$this->$x + $j] = -2;
+				}
+			}
+		}
+	}
 }
 
 
