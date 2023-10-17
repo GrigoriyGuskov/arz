@@ -117,7 +117,7 @@ class Ship {
 
 	}
 	public function death($matrix) {
-		if() {
+		if(!$alive && $this->is_dead($matrix)) {
 			if($this->$dir == 0) {
 				if($this->$x > 0) {
 					$matrix[$this->$y][$this->$x-1] = -2;
