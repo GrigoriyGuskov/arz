@@ -140,7 +140,7 @@ for ($i=0; $i < MATRIX_SIZE; ++$i) {
 	}
 }
 //расставляем корабли
-for($shcount = 0, $i = 4; $i > 3; --$i) {
+for($shcount = 0, $i = 4; $i > 0; --$i) {
 	for($k = 0; $k < $i - 4; ++$k, ++$shcount) {
 		//задаем координаты
 		for($empt_fl = 0; !$empt_fl;) {
