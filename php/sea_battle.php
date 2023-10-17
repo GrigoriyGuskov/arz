@@ -49,53 +49,55 @@ class Ship {
 		return 1;
 	}
 	public function place_ship($matrix) {
-		//окружаем корабль "забором"
-		if($this->$dir == 0) {
-			if($this->$x > 0) {
-				$matrix[$this->$y][$this->$x-1] = -1;
-				if($this->$y > 0) 
-					$matrix[$this->$y-1][$this->$x-1] = -1;
-				if($this->$y < 9)
-					$matrix[$this->$y+1][$this->$x-1] = -1;
-			}
-			if($this->$x+$this->$lenght-1 < 9) {
-				$matrix[$this->$y][$this->$x+$this->$lenght] = -1;
-				if($this->$y > 0) 
-					$matrix[$this->$y-1][$this->$x+$this->$lenght] = -1;
-				if($this->$y < 9)
-					$matrix[$this->$y+1][$this->$x+$this->$lenght] = -1;
-			}
-		}
-		else {
-			if($this->$y > 0) {
-				$matrix[$this->$y-1][$this->$x] = -1;
-				if($this->$x > 0)
-					$matrix[$this->$y-1][$this->$x-1] = -1;
-				if($this->$x < 9)
-					$matrix[$this->$y-1][$this->$x+1] = -1;
-			}
-			if($this->$y+$this->$lenght-1 < 9) {
-				$matrix[$this->$y+$this->$lenght][$this->$x] = -1;
-				if($x > 0)
-					$matrix[$this->$y+$this->$lenght][$this->$x-1] = -1;
-				if($this->$x < 9)
-					$matrix[$this->$y+$this->$lenght][$this->$x+1] = -1;
-			}
-		}
-		//ставим сам корабль
-		for($j = 0; $j < $this->$lenght; ++$j) {
+		if($this->is_empty($matrix)) {
+			//окружаем корабль "забором"
 			if($this->$dir == 0) {
-				$matrix[$this->$y + $j][$this->$x] = $this->$lenght;
-				if($this->$x < 9)
-					$matrix[$this->$y + $j][$this->$x+1] = -1;
-				if($this->$x > 0)
-					$matrix[$this->$y + $j][$this->$x-1] = -1;
-			} else {
-				$matrix[$this->$y][$this->$x + $j] = $this->$lenght;
-				if($this->$y < 9)
-					$matrix[$this->$y+1][$this->$x + $j] = -1;
-				if($this->$y > 0)
-					$matrix[$this->$y-1][$this->$x + $j] = -1;
+				if($this->$x > 0) {
+					$matrix[$this->$y][$this->$x-1] = -1;
+					if($this->$y > 0) 
+						$matrix[$this->$y-1][$this->$x-1] = -1;
+					if($this->$y < 9)
+						$matrix[$this->$y+1][$this->$x-1] = -1;
+				}
+				if($this->$x+$this->$lenght-1 < 9) {
+					$matrix[$this->$y][$this->$x+$this->$lenght] = -1;
+					if($this->$y > 0) 
+						$matrix[$this->$y-1][$this->$x+$this->$lenght] = -1;
+					if($this->$y < 9)
+						$matrix[$this->$y+1][$this->$x+$this->$lenght] = -1;
+				}
+			}
+			else {
+				if($this->$y > 0) {
+					$matrix[$this->$y-1][$this->$x] = -1;
+					if($this->$x > 0)
+						$matrix[$this->$y-1][$this->$x-1] = -1;
+					if($this->$x < 9)
+						$matrix[$this->$y-1][$this->$x+1] = -1;
+				}
+				if($this->$y+$this->$lenght-1 < 9) {
+					$matrix[$this->$y+$this->$lenght][$this->$x] = -1;
+					if($x > 0)
+						$matrix[$this->$y+$this->$lenght][$this->$x-1] = -1;
+					if($this->$x < 9)
+						$matrix[$this->$y+$this->$lenght][$this->$x+1] = -1;
+				}
+			}
+			//ставим сам корабль
+			for($j = 0; $j < $this->$lenght; ++$j) {
+				if($this->$dir == 0) {
+					$matrix[$this->$y + $j][$this->$x] = $this->$lenght;
+					if($this->$x < 9)
+						$matrix[$this->$y + $j][$this->$x+1] = -1;
+					if($this->$x > 0)
+						$matrix[$this->$y + $j][$this->$x-1] = -1;
+				} else {
+					$matrix[$this->$y][$this->$x + $j] = $this->$lenght;
+					if($this->$y < 9)
+						$matrix[$this->$y+1][$this->$x + $j] = -1;
+					if($this->$y > 0)
+						$matrix[$this->$y-1][$this->$x + $j] = -1;
+				}
 			}
 		}
 	}
