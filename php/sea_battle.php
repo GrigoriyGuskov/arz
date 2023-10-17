@@ -192,8 +192,8 @@ for ($i=0; $i < MATRIX_SIZE; ++$i) {
 for($shcount = 0, $i = 4; $i > 0; --$i) {
 	for($k = 0; $k < $i - 4; ++$k, ++$shcount) {
 		//задаем координаты
+		$ships[$shcount] = new Ship;
 		for($empt_fl = 0; !$empt_fl;) {
-			$ships[$shcount] = new Ship;
 			$ships[$shcount]->$x = rand(0, 10);
 			$ships[$shcount]->$y = rand(0, 10);
 			$ships[$shcount]->$dir = rand(0, 1);
