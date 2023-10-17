@@ -99,6 +99,23 @@ class Ship {
 			}
 		}
 	}
+	public function is_that_ship($matrix, $x, $y) {
+		$value = $matrix[$x][$y];
+		if($value > 4)
+			$value -= 4;
+		if($value != $this->$lenght)
+			return 0;
+
+		if($this->$dir == 0) {
+			if($x != $this->$x || $y < $this->$y || $y > $this->$y + $this->$lenght - 1)
+				return 0;
+		} else {
+			if($y != $this->$y || $x < $this->$x || $x > $this->$x + $this->$lenght - 1)
+				return 0;
+		}
+		return 1;
+
+	}
 }
 
 
