@@ -10,39 +10,39 @@ class Ship {
 	public $alive = 1;
 
 	public function is_dead($matrix) {
-		for($i = 0; $i < this->$lenght; ++$i) {
-			if(this->$dir == 0) {
-				if($matrix[this->$y + $i][this->$x] == this->$lenght) {
-					this->$alive = 1;
+		for($i = 0; $i < $this->$lenght; ++$i) {
+			if($this->$dir == 0) {
+				if($matrix[$this->$y + $i][$this->$x] == $this->$lenght) {
+					$this->$alive = 1;
 					return 0;
-				} else if($matrix[this->$y + $i][this->$x] != this->$lenght + 4)
+				} else if($matrix[$this->$y + $i][$this->$x] != $this->$lenght + 4)
 					exit();
 			} else {
-				if($matrix[this->$y][this->$x + $i] == this->$lenght) {
-					this->$alive = 1;
+				if($matrix[$this->$y][$this->$x + $i] == $this->$lenght) {
+					$this->$alive = 1;
 					return 0;
-				} else if($matrix[this->$y][this->$x + $i] != this->$lenght + 4)
+				} else if($matrix[$this->$y][$this->$x + $i] != $this->$lenght + 4)
 					exit();
 			}
 		}
-		this->$alive = 0;
+		$this->$alive = 0;
 		return 1;
 	}
 	//проверка можно ли поставить корабль
 	public function is_empty($matrix) {
-		if(this->$dir == 1) {
-			if(this->$x > MATRIX_SIZE - this->$lenght)
+		if($this->$dir == 1) {
+			if($this->$x > MATRIX_SIZE - $this->$lenght)
 				return 0;
-			for($i = 0; $i < this->$lenght; ++$i) {
-				if($matrix[this->$y][this->$x + $i])
+			for($i = 0; $i < $this->$lenght; ++$i) {
+				if($matrix[$this->$y][$this->$x + $i])
 					return 0;
 			}
 		} 
-		if(this->$dir == 0) {
-			if(this->$y > MATRIX_SIZE - this->$lenght)
+		if($this->$dir == 0) {
+			if($this->$y > MATRIX_SIZE - $this->$lenght)
 				return 0;
-			for($i = 0; $i < this->$lenght; ++$i) {
-				if($matrix[this->$y + $i][this->$x])
+			for($i = 0; $i < $this->$lenght; ++$i) {
+				if($matrix[$this->$y + $i][$this->$x])
 					return 0;
 			}
 		}
@@ -50,52 +50,52 @@ class Ship {
 	}
 	public function place_ship($matrix) {
 		//окружаем корабль "забором"
-		if(this->$dir == 0) {
-			if(this->$x > 0) {
-				$matrix[this->$y][this->$x-1] = -1;
-				if(this->$y > 0) 
-					$matrix[this->$y-1]this->[$x-1] = -1;
-				if(this->$y < 9)
-					$matrix[this->$y+1][this->$x-1] = -1;
+		if($this->$dir == 0) {
+			if($this->$x > 0) {
+				$matrix[$this->$y][$this->$x-1] = -1;
+				if($this->$y > 0) 
+					$matrix[$this->$y-1][$this->$x-1] = -1;
+				if($this->$y < 9)
+					$matrix[$this->$y+1][$this->$x-1] = -1;
 			}
-			if(this->$x+this->$lenght-1 < 9) {
-				$matrix[this->$y][this->$x+this->$lenght] = -1;
-				if(this->$y > 0) 
-					$matrix[this->$y-1][this->$x+this->$lenght] = -1;
-				if(this->$y < 9)
-					$matrix[this->$y+1][this->$x+this->$lenght] = -1;
+			if($this->$x+$this->$lenght-1 < 9) {
+				$matrix[$this->$y][$this->$x+$this->$lenght] = -1;
+				if($this->$y > 0) 
+					$matrix[$this->$y-1][$this->$x+$this->$lenght] = -1;
+				if($this->$y < 9)
+					$matrix[$this->$y+1][$this->$x+$this->$lenght] = -1;
 			}
 		}
 		else {
-			if(this->$y > 0) {
-				$matrix[this->$y-1][this->$x] = -1;
-				if(this->$x > 0)
-					$matrix[this->$y-1][this->$x-1] = -1;
-				if(this->$x < 9)
-					$matrix[this->$y-1][this->$x+1] = -1;
+			if($this->$y > 0) {
+				$matrix[$this->$y-1][$this->$x] = -1;
+				if($this->$x > 0)
+					$matrix[$this->$y-1][$this->$x-1] = -1;
+				if($this->$x < 9)
+					$matrix[$this->$y-1][$this->$x+1] = -1;
 			}
-			if(this->$y+this->$lenght-1 < 9) {
-				$matrix[this->$y+this->$lenght][this->$x] = -1;
+			if($this->$y+$this->$lenght-1 < 9) {
+				$matrix[$this->$y+$this->$lenght][$this->$x] = -1;
 				if($x > 0)
-					$matrix[this->$y+this->$lenght][this->$x-1] = -1;
-				if(this->$x < 9)
-					$matrix[this->$y+this->$lenght][this->$x+1] = -1;
+					$matrix[$this->$y+$this->$lenght][$this->$x-1] = -1;
+				if($this->$x < 9)
+					$matrix[$this->$y+$this->$lenght][$this->$x+1] = -1;
 			}
 		}
 		//ставим сам корабль
-		for($j = 0; $j < this->$lenght; ++$j) {
-			if(this->$dir == 0) {
-				$matrix[this->$y + $j][this->$x] = this->$lenght;
-				if(this->$x < 9)
-					$matrix[this->$y + $j][this->$x+1] = -1;
-				if(this->$x > 0)
-					$matrix[this->$y + $j][this->$x-1] = -1;
+		for($j = 0; $j < $this->$lenght; ++$j) {
+			if($this->$dir == 0) {
+				$matrix[$this->$y + $j][$this->$x] = $this->$lenght;
+				if($this->$x < 9)
+					$matrix[$this->$y + $j][$this->$x+1] = -1;
+				if($this->$x > 0)
+					$matrix[$this->$y + $j][$this->$x-1] = -1;
 			} else {
-				$matrix[this->$y][this->$x + $j] = this->$lenght;
-				if(this->$y < 9)
-					$matrix[this->$y+1][this->$x + $j] = -1;
-				if(this->$y > 0)
-					$matrix[this->$y-1][this->$x + $j] = -1;
+				$matrix[$this->$y][$this->$x + $j] = $this->$lenght;
+				if($this->$y < 9)
+					$matrix[$this->$y+1][$this->$x + $j] = -1;
+				if($this->$y > 0)
+					$matrix[$this->$y-1][$this->$x + $j] = -1;
 			}
 		}
 	}
