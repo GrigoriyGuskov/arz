@@ -196,8 +196,8 @@ for($shcount = 0, $i = 4; $i > 0; --$i) {
 		//задаем координаты
 		$ships[$shcount] = new Ship;
 		for($empt_fl = 0; !$empt_fl;) {
-			$ships[$shcount]->$x = rand(0, 10);
-			$ships[$shcount]->$y = rand(0, 10);
+			$ships[$shcount]->$x = rand(0, 9);
+			$ships[$shcount]->$y = rand(0, 9);
 			$ships[$shcount]->$dir = rand(0, 1);
 			$ships[$shcount]->$lenght = $i;
 			$empt_fl = $ships[$shcount]->is_empty($mat);
